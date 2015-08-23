@@ -2,7 +2,7 @@
  * timezones - A jQuery plugin to turn a select box into a timezone selector
  * v0.1.0
  * https://github.com/firstandthird/timezones
- * copyright First+Third 2014
+ * copyright First+Third 2015
  * MIT License
 */
 (function($){
@@ -13,10 +13,12 @@
       this.formatName = formatName;
 
       for(var key in cities) {
-        this.cities.push({
-          name: cities[key],
-          offset: moment.tz(cities[key]).format('Z')
-        });
+        if (cities.hasOwnProperty(key)){
+          this.cities.push({
+            name: cities[key],
+            offset: moment.tz(cities[key]).format('Z')
+          });
+        }
       }
 
       this.cities.sort(function(a, b){
